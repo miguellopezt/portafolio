@@ -1,0 +1,127 @@
+{
+    "title": "Miguel Alessandro López Tamagno | Spatial Data Engineer",
+    "description": "Ingeniero de Tecnologías de la Información Geoespacial. Especialista en Big Data, ETL y Análisis con Python y R.",
+    "image": "avatar.png",
+    "avatar": "avatar.png",
+    "name": "Miguel Alessandro López Tamagno",
+    "skill": "Ingeniería Geoespacial & Big Data Analytics",
+    "location": "Torrejón de Ardoz, Madrid, España",
+    "media": {
+        "email": "miguellopeztamagno@gmail.com",
+        "cv": "data/cv_miguellopez.pdf",
+        "likedin": "https://www.linkedin.com/in/miguel-l%C3%B3pez-tamagno-272a27390/"
+    },
+    "about": "Ingeniero en formación en Tecnologías de la Información Geoespacial con una sólida base técnica en tratamiento y análisis de datos. Mi perfil combina la precisión de la ingeniería con la versatilidad de la Ciencia de Datos. Mi dominio abarca desde la ingesta automatizada (ETL) y bases de datos espaciales, hasta el análisis masivo (Big Data), integrando herramientas como Python, ArcGIS o RStudio para análisis espacio-temporales profundos. Busco un entorno donde transformar análisis complejos en soluciones efectivas, con la determinación de aplicar la ciencia de datos a sectores inéditos para mi perfil.\n\nActualmente, me encuentro en búsqueda activa de prácticas donde pueda desarrollar mi perfil profesional, aplicando mis conocimientos técnicos y adquiriendo experiencia valiosa en el mundo laboral.",
+    "technologies": [
+        { "icon": "devicon-python-plain", "name": "Python" },
+        { "icon": "devicon-pandas-plain", "name": "Pandas / GeoPandas" },
+        { "icon": "map", "name": "ArcGIS / QGIS" },
+        { "icon": "devicon-r-plain", "name": "R Studio" },
+        { "icon": "devicon-postgresql-plain", "name": "PostgreSQL / PostGIS" },
+        { "icon": "workflow", "name": "Big Data / ETL" },
+        { "icon": "devicon-django-plain", "name": "Django Framework" }
+        
+    ],
+    
+    "experience": [
+        {
+            "icon": "school",
+            "title": "Universidad Politécnica de Madrid",
+            "subtitle": "Grado en Ingeniería en Tecnologías de la Información Geoespacial",
+            "description": "Formación integral en ingeniería de datos, Infraestructuras de Datos Espaciales (IDE), programación avanzada y algoritmia aplicada a problemas geográficos.",
+            "date": "2022 - Actualidad",
+            "certificate": ""
+        }
+    ],
+    "projects": [
+        {
+            "icon": "cloud",
+            "title": "Sistema Unificado de Calidad del Aire (TFG)",
+            "subtitle": "ETL & Automatización Cloud",
+            "description": "Pipeline ETL en Python que unifica datos en tiempo real de múltiples fuentes (CC.AA. y MITECO). Despliegue automatizado en Oracle Cloud para garantizar alta disponibilidad.",
+            "technologies": [
+                { "icon": "devicon-python-plain", "name": "Python" },
+                { "icon": "devicon-numpy-plain", "name": "NumPy"},
+                { "icon": "devicon-pandas-plain", "name": "Pandas"},
+                { "icon": "devicon-sqlite-plain", "name": "SQLite" },
+                { "icon": "devicon-oracle-plain", "name": "Oracle Cloud" }
+            ],
+            "image": "proyecto_aire.webp",
+            "url": "#"
+        },
+        {
+            "icon": "car",
+            "title": "Movilidad Urbana Inteligente",
+            "subtitle": "Location Intelligence",
+            "description": "Estudio de optimización de aparcamiento en Madrid. Cruce espacial de datos de tráfico y parquímetros para generar mapas de calor y propuestas de movilidad.",
+            "technologies": [
+                { "icon": "devicon-python-plain", "name": "Python" },
+                { "icon": "map", "name": "ArcGIS" },
+                { "icon": "map-pin", "name": "Spatial Analysis" }
+            ],
+            "image": "proyecto_parking.webp",
+            "url": "#"
+        },
+        {
+            "icon": "leaf",
+            "title": "Resiliencia Agrícola (Murcia)",
+            "subtitle": "Teledetección Aplicada",
+            "description": "Evaluación de salud de cultivos mediante series temporales de NDVI. Modelado predictivo para apoyar la toma de decisiones en agricultura de precisión.",
+            "technologies": [
+                { "icon": "devicon-python-plain", "name": "Python" },
+                { "icon": "map", "name": "ArcGIS" },
+                { "icon": "satellite", "name": "Remote Sensing" }
+            ],
+            "image": "proyecto_agro.webp",
+            "url": "https://storymaps.arcgis.com/stories/9a254a8d1e4240648b4d91c4f7886955"
+        },
+        {
+            "icon": "globe",
+            "title": "Big Data Geoespacial EE.UU.",
+            "subtitle": "Análisis Espacial Masivo",
+            "description": "Procesamiento Big Data de registros del IRS para el periodo 2021-2022. Detección de patrones de migración interna a nivel de condado mediante correlación geográfica y estadística espacial.",
+            "technologies": [
+                { "icon": "devicon-python-plain", "name": "Python" },
+                { "icon": "devicon-pandas-plain", "name": "GeoPandas" },
+                { "icon": "devicon-numpy-plain", "name": "NumPy"},
+                { "icon": "database", "name": "Big Data" }
+            ],
+            "image": "Cluster_EEUU.webp",
+            "url": "#"
+        }
+    ],
+    "training": [
+         {
+            "icon": "languages",
+            "title": "Certificado Aptis General",
+            "subtitle": "British Council - Nivel B2",
+            "description": "Certificación oficial de competencia lingüística en inglés, acreditando nivel B2 según el Marco Común Europeo de Referencia (MCER).",
+            "date": "Certificado",
+            "certificate": ""
+        }
+    ],
+    "extras": [
+        {
+            "image": "analitico.svg",
+            "title": "Pensamiento Analítico",
+            "description": "Capacidad para descomponer problemas complejos de datos en soluciones lógicas, eficientes y escalables."
+        },
+        {
+            "image": "adaptabilidad.svg",
+            "title": "Adaptabilidad y Versatilidad",
+            "description": "Agilidad para aplicar la ingeniería de datos a sectores diversos (Medio Ambiente, Urbanismo, Tech) y aprender nuevas herramientas rápidamente."
+        },
+        {
+            "image": "innovacion.svg",
+            "title": "Innovación Tecnológica",
+            "description": "Enfoque proactivo en la búsqueda de nuevas arquitecturas y metodologías para optimizar procesos tradicionales."
+        }],
+    "movilidad":[
+        {
+            "icon":"car",
+            "title": "Movilidad y Disponibilidad",
+            "subtitle":"Vehículo Propio y Carnet B",
+            "description": "Dispongo de Carnet de Conducir B y vehículo propio, lo que ofrece total flexibilidad para desplazamientos."
+        }
+    ]
+}
