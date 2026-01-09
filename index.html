@@ -161,15 +161,17 @@
         }
 
         .card-icon {
-            color: #FFFFFF;
-            background: rgba(13, 148, 136, 0.2);
-            padding: 0.75rem;
-            border-radius: 50%;
-            flex-shrink: 0;
+          color: #ffffff;
+          background: rgba(13, 148, 136, 0.2);
+          padding: 0.75rem;
+          border-radius: 50%;
+          flex-shrink: 0;
+          transform: translateZ(0);
         }
-        
-        .card-icon{
-            will-change: transform;
+
+        .card-icon svg {
+          display: block;
+          will-change: transform;
         }
         
         .card-content {
@@ -265,7 +267,7 @@
         }
 
         .skill-description {
-            color: #9ca3af;
+            color: #ededed;
             font-size: 0.875rem;
         }
 
