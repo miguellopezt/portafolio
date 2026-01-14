@@ -34,6 +34,8 @@
             background-size: 300% 300%;
             animation: movingGradient 30s ease-in-out infinite;
             z-index: 0;
+            will-change: background-position;
+            transform: translateZ(0);
         }
 
         .content {
@@ -87,6 +89,7 @@
             background: #0d9488;
             border-radius: 50%;
             flex-shrink: 0;
+            object-fit: cover;
         }
 
         .header-content {
@@ -112,6 +115,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             background: #0d9488;
@@ -120,11 +124,21 @@
             border-radius: 15px;
             transition: background 0.2s;
             font-size: 0.875rem;
-            font-weight:500;
+            font-weight: 500;
+            min-width: 40px;
+            min-height: 40px;
+            will-change: background;
+            transform: translateZ(0);
         }
 
         .btn:hover {
             background: #14b8a6;
+        }
+
+        .btn svg {
+            flex-shrink: 0;
+            display: block;
+            pointer-events: none;
         }
 
         .text-content {
@@ -163,17 +177,17 @@
         }
 
         .card-icon {
-          color: #ffffff;
-          background: rgba(13, 148, 136, 0.2);
-          padding: 0.75rem;
-          border-radius: 15%;
-          flex-shrink: 0;
-          transform: translateZ(0);
+            color: #ffffff;
+            background: rgba(13, 148, 136, 0.2);
+            padding: 0.75rem;
+            border-radius: 15%;
+            flex-shrink: 0;
+            transform: translateZ(0);
         }
 
         .card-icon svg {
-          display: block;
-          will-change: transform;
+            display: block;
+            will-change: transform;
         }
         
         .card-content {
@@ -213,19 +227,40 @@
             color: #ededed;
         }
 
-        .project-image {
+        .project-image-container {
             width: 100%;
             max-width: 300px;
             height: 180px;
-            object-fit: cover;
             border-radius: 0.5rem;
             background: #1f2937;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
         .project-image.loaded {
             opacity: 1;
+        }
+
+        .project-image-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            opacity: 0.2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.3; }
         }
 
         .skills-grid {
@@ -299,6 +334,286 @@
             padding: 2rem 0;
         }
 
+        /* Optimización de carga de imágenes */
+        img {
+            content-visibility: auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.25rem; }
+            .content { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #5eead4;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .avatar {
+            width: 6rem;
+            height: 6rem;
+            background: #0d9488;
+            border-radius: 50%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .header-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d1d5db;
+            margin: 1rem 0;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+            font-size: 0.875rem;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .btn:hover {
+            background: #14b8a6;
+        }
+
+        .btn svg {
+            flex-shrink: 0;
+            display: block;
+        }
+
+        /* Fallback para cuando el SVG no carga */
+        .btn:empty::before {
+            content: "🔗";
+            font-size: 16px;
+        }
+
+        .text-content {
+            color: #d1d5db;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(13, 148, 136, 0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .tech-badge i {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .card-icon {
+            background: rgba(13, 148, 136, 0.2);
+            padding: 0.75rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: #1f2937;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: #d1d5db;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 300px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            background: #1f2937;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-image.loaded {
+            opacity: 1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: rgba(13, 148, 136, 0.1);
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-image {
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-image img {
+            max-width: 5rem;
+            max-height: 5rem;
+        }
+
+        .skill-title {
+            color: #5eead4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-description {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #374151;
+            margin: 2rem 0;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            background: rgba(13, 148, 136, 0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        footer {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            padding: 2rem 0;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             h2 { font-size: 1.25rem; }
@@ -330,8 +645,11 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
                             CV
                         </a>
-                        <a href="https://www.linkedin.com/in/miguel-lópez-tamagno-272a27390/" target="_blank" class="btn">
+                        <a href="https://www.linkedin.com/in/miguel-lópez-tamagno-272a27390/" target="_blank" class="btn" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://github.com/miguellopezt" target="_blank" class="btn" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                         </a>
                     </div>
                 </div>
@@ -414,9 +732,10 @@
                 </div>
                 <div class="card-content">
                     <div class="card-title">Sistema de Calidad del Aire: Visor Web Multianalítico (En Proceso)</div>
-                    <div class="card-subtitle">ETL & Análisis & Fullstack & IA & Cloud </div>
+                    <div class="card-subtitle">ETL & Análisis & Fullstack & IA & Cloud</div>
                     <div class="card-description">
-                        <p>Sistema que integra Pipelines ETL en Python que recopilan y unifican datos en tiempo real de múltiples fuentes (CC.AA. y MITECO) para el cálculo y visualización del Índice de Calidad del Aire (AQI) en España.</p><br><p>El backend del sistema, orquestado por FastAPI, se encarga de la generación de mapas de calor, así como de la limpieza automatizada de los últimos datos. Además, entrenará modelos de Redes Neuronales (LSTM) aplicables, permitiendo realizar predicciones precisas del AQI, combinándose con variables climáticas en tiempo real.</p><br><p>El frontend, será un visor interactivo desarrollado con React + Vite y Leaflet, con despliegue automatizado en una instancia de Oracle Cloud.</p></div>
+                        <p>Sistema que integra Pipelines ETL en Python que recopilan y unifican datos en tiempo real de múltiples fuentes (CC.AA. y MITECO) para el cálculo y visualización del Índice de Calidad del Aire (AQI) en España.</p><br><p>El backend del sistema, orquestado por FastAPI, se encarga de la generación de mapas de calor, así como de la limpieza automatizada de los últimos datos. Además, entrenará modelos de Redes Neuronales (LSTM) aplicables, permitiendo realizar predicciones precisas del AQI, combinándose con variables climáticas en tiempo real.</p><br><p>El frontend, será un visor interactivo desarrollado con React + Vite y Leaflet, con despliegue automatizado en una instancia de Oracle Cloud.</p>
+                    </div>
                     <div class="tags">
                         <span class="tag">Python</span>
                         <span class="tag">NumPy</span>
@@ -428,13 +747,17 @@
                         <span class="tag">Leaflet</span>
                         <span class="tag">SQLite</span>
                         <span class="tag">Oracle Cloud</span>
-                        
                     </div>
-                    <a href="https://calidadairespaintfg.ddns.net/" class="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    <a href="https://calidadairespaintfg.ddns.net/" target="_blank" class="btn" aria-label="Ver proyecto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
                     </a>
                 </div>
-                <img src="/portafolio/proyecto_aire.webp" alt="Proyecto Aire" class="project-image" onload="this.classList.add('loaded')">
+                <div class="project-image-container">
+                    <img src="/portafolio/proyecto_aire.webp" alt="Proyecto Aire" class="project-image" loading="lazy">
+                </div>
             </div>
 
             <div class="card">
@@ -453,7 +776,7 @@
                         <span class="tag">Spatial Analysis</span>
                     </div>
                     <a href="#" class="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        <i data-lucide="link"></i>
                     </a>
                 </div>
                 <img src="/portafolio/proyecto_parking.webp" alt="Proyecto Parking" class="project-image" onload="this.classList.add('loaded')">
@@ -474,11 +797,16 @@
                         <span class="tag">ArcGIS</span>
                         <span class="tag">Remote Sensing</span>
                     </div>
-                    <a href="https://storymaps.arcgis.com/stories/9a254a8d1e4240648b4d91c4f7886955" target="_blank" class="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    <a href="https://storymaps.arcgis.com/stories/9a254a8d1e4240648b4d91c4f7886955" target="_blank" class="btn" aria-label="Ver proyecto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
                     </a>
                 </div>
-                <img src="/portafolio/proyecto_agro.webp" alt="Proyecto Agrícola" class="project-image" onload="this.classList.add('loaded')">
+                <div class="project-image-container">
+                    <img src="/portafolio/proyecto_agro.webp" alt="Proyecto Agrícola" class="project-image" loading="lazy">
+                </div>
             </div>
 
             <div class="card">
@@ -498,7 +826,7 @@
                         <span class="tag">Big Data</span>
                     </div>
                     <a href="#" class="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        <i data-lucide="link"></i>
                     </a>
                 </div>
                 <img src="/portafolio/Cluster_EEUU.webp" alt="Proyecto USA" class="project-image" onload="this.classList.add('loaded')">
@@ -577,7 +905,7 @@
         <hr>
 
         <footer>
-            <p>© 2025 Miguel Alessandro López Tamagno</p>
+            <p>© 2024 Miguel Alessandro López Tamagno</p>
         </footer>
     </div>
 
