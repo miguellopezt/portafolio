@@ -662,6 +662,8 @@
         document.querySelectorAll('.section, .skill-card').forEach(section => {
             observer.observe(section);
         });
+        window.history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
     </script>
 </body>
 </html>
