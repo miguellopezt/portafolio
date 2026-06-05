@@ -58,6 +58,8 @@
         .badge { padding: 0.25rem 0.75rem; background: rgba(13, 148, 136, 0.2); border-radius: 9999px; font-size: 0.875rem; white-space: nowrap; }
         footer { text-align: center; color: #9ca3af; font-size: 0.875rem; padding: 2rem 0; }
         img { content-visibility: auto; }
+        .project-images { display: flex; flex-direction: column; gap: 0.75rem; flex-shrink: 0; }
+        .project-images .project-image-container { width: 300px; height: 180px; max-width: none; }
         @media (max-width: 768px) { h1 { font-size: 2rem; } h2 { font-size: 1.25rem; } .content { padding: 2rem 1rem; } }
     </style>
 </head>
@@ -199,8 +201,27 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                     </a>
                 </div>
-                <div class="project-image-container">
-                    <img src="/portfolio/proyecto_gradientestate.webp" alt="GradientEstate" class="project-image" loading="lazy" onload="this.classList.add('loaded')">
+                <div class="project-images">
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_gradientestate_1.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
+            
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_gradientestate_2.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
+            
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_gradientestate_3.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
                 </div>
             </div>
 
@@ -246,14 +267,27 @@
                         <span class="tag">YOLOv8</span><span class="tag">ResNet</span><span class="tag">CNN Multi-tarea</span><span class="tag">Regresión Angular</span><span class="tag">PyTorch</span><span class="tag">PNOA / IGN</span><span class="tag">Computer Vision</span><span class="tag">Teledetección</span>
                     </div>
                 </div>
-                <div class="project-image-container">
-                    <img src="/portfolio/proyecto_yolo_1.webp" alt="CNN Multi-tarea PNOA" class="project-image" loading="lazy" onload="this.classList.add('loaded')">
-                </div>
-                <div class="project-image-container">
-                    <img src="/portfolio/proyecto_yolo_2.webp" alt="CNN Multi-tarea PNOA" class="project-image" loading="lazy" onload="this.classList.add('loaded')">
-                </div>
-                <div class="project-image-container">
-                    <img src="/portfolio/proyecto_yolo_3.webp" alt="CNN Multi-tarea PNOA" class="project-image" loading="lazy" onload="this.classList.add('loaded')">
+                <div class="project-images">
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_yolo_1.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
+            
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_yolo_2.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
+            
+                    <div class="project-image-container">
+                        <img src="/portfolio/proyecto_yolo_3.webp"
+                             class="project-image"
+                             loading="lazy"
+                             onload="this.classList.add('loaded')">
+                    </div>
                 </div>
             </div>
 
