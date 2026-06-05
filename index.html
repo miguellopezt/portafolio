@@ -61,6 +61,11 @@
         .project-images { display: flex; flex-direction: column; gap: 0.75rem; flex-shrink: 0; }
         .project-images .project-image-container { width: 300px; height: 180px; max-width: none; }
         @media (max-width: 768px) { h1 { font-size: 2rem; } h2 { font-size: 1.25rem; } .content { padding: 2rem 1rem; } }
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; transform: scale(0.8); transition: transform 0.3s ease; }
+        .lightbox.active img { transform: scale(1); }
+        .project-image { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -176,7 +181,7 @@
                 <span class="badge">2022 - Actualidad</span>
             </div>
         </div>
-
+        
         <!-- Proyectos -->
         <div class="section">
             <h3>Proyectos Destacados</h3>
@@ -430,7 +435,9 @@
         <hr>
         <footer><p>© 2026 Miguel Alessandro López Tamagno</p></footer>
     </div>
-
+    <div id="lightbox" class="lightbox">
+        <img id="lightbox-img" src="" alt="">
+    </div>
     <script>
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
@@ -444,6 +451,21 @@
         document.querySelectorAll('.section, .skill-card').forEach(section => { observer.observe(section); });
         window.history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
+        const lightbox=document.getElementById('lightbox');
+        const lightboxImg=document.getElementById('lightbox-img');
+        
+        document.querySelectorAll('.project-image').forEach(img=>{
+            img.addEventListener('click',()=>{
+                lightboxImg.src=img.src;
+                lightbox.classList.add('active');
+            });
+        });
+        
+        lightbox.addEventListener('click',()=>lightbox.classList.remove('active'));
+        
+        document.addEventListener('keydown',e=>{
+            if(e.key==='Escape') lightbox.classList.remove('active');
+        });
     </script>
 </body>
 </html>
